@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is the server folder for the ProspectMiner AI project",
+  "keywords": [
+    "AI",
+    "Miner",
+    "ProspectMiner",
+    "AI"
+  ],
+  "license": "ISC",
+  "author": "Vaibhav Sutar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
