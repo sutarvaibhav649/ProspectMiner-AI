@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './src/config/db.js';
 import dotenv from 'dotenv'
 import { globalErrorHandler } from './src/middlewares/error.middleware.js';
+import authRoutes from './src/modules/auth/auth.routes.js'
 
 /**
     This file contains configurations to start the express app
@@ -15,10 +16,13 @@ dotenv.config({
 })
 
 const app = express();
-app.use(express.json())
+app.use(express.json());
 
 // connect the DB
 connectDB();
+
+// Routes
+app.use("/api/v1/auth",authRoutes);
 
 app.use(globalErrorHandler);
 
