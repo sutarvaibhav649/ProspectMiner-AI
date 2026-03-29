@@ -1,5 +1,5 @@
 import {scrapeQueue} from '../../queues/scrapeQueue.js';
-
+import Lead from '../../models/leads.model.js';
 export const enqueueScrapeJob = async (data)=>{
     const job = await scrapeQueue.add("scrape-job",data);
     return job.id;
@@ -17,3 +17,7 @@ export const getJobStatus = async (jobId)=>{
         progress: job.progress
     };
 }
+
+export const getLeadsByJobId = async (jobId) => {
+    return await Lead.find({ jobId });
+};

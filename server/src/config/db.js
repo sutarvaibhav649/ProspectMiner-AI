@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import dns from 'dns';
 
+
 /**
     This file have settings to connect with the mongoDB atlas
     Here the DNS is set so the system can connect to the MongoDB atlas

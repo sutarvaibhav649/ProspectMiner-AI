@@ -1,7 +1,8 @@
 import { Worker } from "bullmq";
 import { redisConnection } from "./src/config/redis.js";
-
-
+import Lead from './src/models/leads.model.js';
+import connectDB from "./src/config/db.js";
+import dotenv from 'dotenv'; 
 /**
     This file contains the scrape worker function that handle
     the async processing
@@ -9,6 +10,15 @@ import { redisConnection } from "./src/config/redis.js";
     @author Vaibhav Sutar
     @version 1.0
  */
+
+
+dotenv.config({
+    path: "./.env"
+})
+// connect the DB
+await connectDB();
+
+console.log("Worker started...");
 export const scrapeWorker = new Worker(
     "scrapeQueue",
 
@@ -21,10 +31,21 @@ export const scrapeWorker = new Worker(
         for (let i = 1; i <= limit; i++) {
             await new Promise((res) => setTimeout(res, 500));
 
-            // update progress
+            // 🔥 Dummy lead (later replace with Puppeteer)
+            const lead = {
+                jobId: job.id,
+                name: `Business ${i}`,
+                address: "Pune",
+                phone: "1234567890",
+                website: "example.com",
+                rating: Math.random() * 5
+            };
+
+            await Lead.create(lead);
+
             await job.updateProgress((i / limit) * 100);
 
-            console.log(`Processed ${i}/${limit}`);
+            console.log(`Saved lead ${i}`);
         }
 
         return { message: "Scraping completed" };

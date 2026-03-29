@@ -1,11 +1,10 @@
 import express from 'express';
-import connectDB from './src/config/db.js';
+import { scrapeWorker } from './worker.js';
 import dotenv from 'dotenv'
 import { globalErrorHandler } from './src/middlewares/error.middleware.js';
 import authRoutes from './src/modules/auth/auth.routes.js';
 import creditsRoutes from './src/modules/credit/credit.route.js';
 import scrapeRoutes from './src/modules/scrape/scrape.routes.js';
-import { scrapeQueue } from './src/queues/scrapeQueue.js';
 /**
     This file contains configurations to start the express app
 
@@ -20,8 +19,8 @@ dotenv.config({
 const app = express();
 app.use(express.json());
 
-// connect the DB
-connectDB();
+
+scrapeWorker
 
 // Routes
 app.use("/api/v1/auth",authRoutes);
