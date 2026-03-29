@@ -2,6 +2,9 @@ import { Worker } from "bullmq";
 import { redisConnection } from "./src/config/redis.js";
 import Lead from './src/models/leads.model.js';
 import connectDB from "./src/config/db.js";
+import { launchBrowser } from "./src/scraper/browseManager.js";
+import { scrapeGoogleMaps } from "./src/scraper/mapsScraper.js";
+
 import dotenv from 'dotenv'; 
 /**
     This file contains the scrape worker function that handle
@@ -28,25 +31,24 @@ export const scrapeWorker = new Worker(
         
         const {query,limit} = job.data;
 
-        for (let i = 1; i <= limit; i++) {
-            await new Promise((res) => setTimeout(res, 500));
+        const browser = await launchBrowser();
+        const page = await browser.newPage();
 
-            // 🔥 Dummy lead (later replace with Puppeteer)
+        const results = await scrapeGoogleMaps(page, query, limit);
+
+        for (let i = 0; i < results.length; i++) {
             const lead = {
                 jobId: job.id,
-                name: `Business ${i}`,
-                address: "Pune",
-                phone: "1234567890",
-                website: "example.com",
-                rating: Math.random() * 5
+                name: results[i].name,
+                rating: results[i].rating
             };
 
             await Lead.create(lead);
 
-            await job.updateProgress((i / limit) * 100);
-
-            console.log(`Saved lead ${i}`);
+            await job.updateProgress(((i + 1) / results.length) * 100);
         }
+
+        await browser.close();
 
         return { message: "Scraping completed" };
     },
