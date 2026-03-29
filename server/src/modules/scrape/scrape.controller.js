@@ -1,4 +1,4 @@
-import { enqueueScrapeJob } from "./scrape.service.js";
+import { enqueueScrapeJob,getJobStatus } from "./scrape.service.js";
 import {deductCredits} from '../../modules/credit/credit.service.js';
 
 export const startScrape = async (req,res,next)=>{
@@ -24,3 +24,19 @@ export const startScrape = async (req,res,next)=>{
         next(err);
     }
 }
+
+export const checkStatus = async (req, res, next) => {
+    try {
+        const { jobId } = req.params;
+
+        const result = await getJobStatus(jobId);
+
+        res.json({
+            success: true,
+            ...result
+        });
+
+    } catch (error) {
+        next(error);
+    }
+};
