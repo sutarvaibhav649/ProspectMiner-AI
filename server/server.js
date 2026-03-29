@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import { globalErrorHandler } from './src/middlewares/error.middleware.js';
 import authRoutes from './src/modules/auth/auth.routes.js';
 import creditsRoutes from './src/modules/credit/credit.route.js';
-
+import { scrapeQueue } from './src/queues/scrapeQueue.js';
 /**
     This file contains configurations to start the express app
 
@@ -21,6 +21,11 @@ app.use(express.json());
 
 // connect the DB
 connectDB();
+
+await scrapeQueue.add("test-job", {
+    query: "dentists in pune",
+    limit: 10
+});
 
 // Routes
 app.use("/api/v1/auth",authRoutes);
