@@ -35,3 +35,7 @@ export const scrapeWorker = new Worker(
         concurrency: 2
     }
 )
+
+scrapeWorker.on("completed", (job) => {
+    console.log(`Job ${job.id} completed`);
+});
