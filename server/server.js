@@ -6,6 +6,7 @@ import authRoutes from './src/modules/auth/auth.routes.js';
 import creditsRoutes from './src/modules/credit/credit.route.js';
 import scrapeRoutes from './src/modules/scrape/scrape.routes.js';
 import historyRoutes from './src/modules/history/history.routes.js';
+import analyticsRoutes from './src/modules/analytic/analytics.routes.js';
 /**
     This file contains configurations to start the express app
 
@@ -28,6 +29,7 @@ app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/credits",creditsRoutes);
 app.use("/api/v1/scrape",scrapeRoutes);
 app.use('/api/v1/history', historyRoutes);
+app.use('/api/v1/analytics', analyticsRoutes);
 
 app.use(globalErrorHandler);
 
