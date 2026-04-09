@@ -5,6 +5,10 @@ import { getJobStatus, getLeads } from '../../api/scrapeApi.js';
 import { exportToCsv } from '../../utils/exportCsv.js';
 import { scoreColor, scoreBg } from '../../utils/scoreColor.js';
 import { formatDate } from '../../utils/formatDate.js';
+import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
+import LeadTable from '../../components/LeadsTable/LeadTable.jsx';
+import ExportButton from '../../components/ExportButton/ExportButton.jsx';
+import SearchBar from '../../components/SearchBar/SearchBar.jsx';
 import './ResultPage.css';
 
 const PAGE_SIZE = 10;
@@ -107,18 +111,10 @@ export default function ResultsPage() {
 
             {/* Progress Card  */}
             {!isCompleted && (
-            <div className="progress-card">
-                <h2>Progress Status</h2>
-                <div className="progress-label-main">
-                    Scraping {Math.round((progressLabel / 100) * (jobInfo?.limit || 100))} / {jobInfo?.limit || '100'} leads
+                <div className="progress-card">
+                    <h2>Progress Status</h2>
+                    <ProgressBar progress={progress} limit={jobInfo?.limit} />
                 </div>
-                <div className="progress-label-sub">
-                🔍 Enriching leads...
-                </div>
-                <div className="progress-track">
-                <div className="progress-fill" style={{ width: `${progressLabel}%` }} />
-                </div>
-            </div>
             )}
 
             {/* Controls */}
@@ -137,22 +133,8 @@ export default function ResultsPage() {
                 Scores
                 </button>
             </div>
-            <div className="search-box">
-                <span className="search-icon">🔍</span>
-                <input
-                type="text"
-                placeholder="Search by name"
-                value={search}
-                onChange={e => { setSearch(e.target.value); setPage(1); }}
-                />
-            </div>
-            <button
-                className="export-btn"
-                onClick={() => exportToCsv(filtered, `leads-${jobId}.csv`)}
-                disabled={!filtered.length}
-            >
-                Export List
-            </button>
+            <SearchBar value={search} onChange={(val) => { setSearch(val); setPage(1); }} />
+            <ExportButton leads={filtered} jobId={jobId} />
             </div>
 
             {/*Leads Table */}

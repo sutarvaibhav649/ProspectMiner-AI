@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import LeadCard from '../LeadCard/LeadCard.jsx';
-import './LeadsTable.css';
+import './LeadTable.css';
 
-export default function LeadsTable({ leads, isCompleted }) {
+export default function LeadTable({ leads, isCompleted }) {
   const [expandedId, setExpandedId] = useState(null);
   const PAGE_SIZE = 10;
   const [page, setPage] = useState(1);
