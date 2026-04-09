@@ -1,0 +1,21 @@
+.searchbar-box { 
+    display: flex; 
+    align-items: center; 
+    background: #fff; 
+    border: 1.5px solid #e2e8f0; 
+    border-radius: 8px; 
+    padding: 0 12px; 
+    gap: 8px; flex: 1; 
+}
+.searchbar-icon { 
+    font-size: 15px; 
+}
+.searchbar-box input { 
+    border: none; 
+    outline: none; 
+    font-size: 14px; 
+    color: #0f172a; 
+    width: 100%; 
+    padding: 9px 0; 
+    background: transparent; 
+}
