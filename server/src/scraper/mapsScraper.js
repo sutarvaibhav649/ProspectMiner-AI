@@ -1,5 +1,3 @@
-// src/scraper/mapsScraper.js
-
 export const scrapeGoogleMaps = async (page, query, limit) => {
     const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -16,7 +14,7 @@ export const scrapeGoogleMaps = async (page, query, limit) => {
     const seenNames = new Set();
     let processedIndex = 0;
 
-    console.log(`🔍 Searching for: ${query} | Limit: ${limit}`);
+    console.log(`Searching for: ${query} | Limit: ${limit}`);
 
     while (results.length < limit) {
         const listingCount = await page.evaluate(() => {
@@ -51,8 +49,8 @@ export const scrapeGoogleMaps = async (page, query, limit) => {
             const getText = (selectors) => {
                 const list = Array.isArray(selectors) ? selectors : [selectors];
                 for (const sel of list) {
-                const el = document.querySelector(sel);
-                if (el && el.innerText?.trim()) return el.innerText.trim();
+                    const el = document.querySelector(sel);
+                    if (el && el.innerText?.trim()) return el.innerText.trim();
                 }
                 return null;
             };

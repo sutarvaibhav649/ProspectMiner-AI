@@ -24,12 +24,12 @@ export const scrapeWorker = new Worker(
         const page = await browser.newPage();
 
         try {
-        // ── Phase 1: Scrape Google Maps ──────────────────────────────
+        //  Phase 1: Scrape Google Maps
         console.log(`\nPhase 1: Scraping Google Maps...`);
         const results = await scrapeGoogleMaps(page, query, limit);
         await page.close();
 
-        // ── Phase 2: Enrich each lead ────────────────────────────────
+        //  Phase 2: Enrich each lead 
         console.log(`\n Phase 2: Enriching ${results.length} leads...`);
 
         for (let i = 0; i < results.length; i++) {
@@ -68,11 +68,11 @@ export const scrapeWorker = new Worker(
                 website: result.website,
                 address: result.address,
                 category: result.category,
-                services: enriched.services,        // ← check this exists
-                ownerName: enriched.ownerName,      // ← check this exists
-                emailPattern: enriched.emailPattern, // ← check this exists
-                score: enriched.score,              // ← check this exists
-                scoreReason: enriched.scoreReason,  // ← check this exists
+                services: enriched.services,        
+                ownerName: enriched.ownerName,      
+                emailPattern: enriched.emailPattern, 
+                score: enriched.score,             
+                scoreReason: enriched.scoreReason, 
                 status: 'processed'
                 });
 
@@ -80,7 +80,7 @@ export const scrapeWorker = new Worker(
                 await job.updateProgress(((i + 1) / results.length) * 100);
             }
 
-        // ── Phase 3: Save Job record ─────────────────────────────────
+        // Phase 3: Save Job record 
                 await Job.create({
                     jobId: job.id,
                     userId,

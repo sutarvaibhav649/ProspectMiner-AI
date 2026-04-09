@@ -53,9 +53,9 @@ export const enrichLead = async (lead, websiteText) => {
         const clean = response.replace(/```json|```/g, '').trim();
         const parsed = JSON.parse(clean);
         return {
-            services: parsed.services || null,       // ← must be 'services'
-            ownerName: parsed.ownerName || null,      // ← must be 'ownerName'
-            emailPattern: parsed.emailPattern || null, // ← must be 'emailPattern'
+            services: parsed.services || null,       
+            ownerName: parsed.ownerName || null,      
+            emailPattern: parsed.emailPattern || null, 
             score: ['High', 'Medium', 'Low'].includes(parsed.score) ? parsed.score : 'Low',
             scoreReason: parsed.scoreReason || null
         };

@@ -3,14 +3,14 @@ import Lead from '../../models/leads.model.js';
 
 export const getAnalyticsSummary = async (userId) => {
 
-  // ── 1. All jobs for this user ────────────────────────────────────
+  // 1. All jobs for this user
     const jobs = await Job.find({ userId }).sort({ createdAt: 1 });
     const jobIds = jobs.map(j => j.jobId);
 
-  // ── 2. All leads for this user's jobs ────────────────────────────
+  //2. All leads for this user's jobs
     const leads = await Lead.find({ jobId: { $in: jobIds } });
 
-  // ── 3. Score distribution — total across all jobs ────────────────
+  //3. Score distribution — total across all jobs
     const scoreDistribution = { High: 0, Medium: 0, Low: 0 };
     leads.forEach(lead => {
         if (lead.score && scoreDistribution[lead.score] !== undefined) {
@@ -18,14 +18,14 @@ export const getAnalyticsSummary = async (userId) => {
         }
     });
 
-  // ── 4. Leads scraped over time — one entry per job ───────────────
+  //  4. Leads scraped over time — one entry per job 
     const leadsOverTime = jobs.map(job => ({
         date: job.createdAt.toISOString().split('T')[0],
         query: job.query,
         totalLeads: job.totalLeads
     }));
 
-  // ── 5. Top performing queries by High lead % ─────────────────────
+  // 5. Top performing queries by High lead %
     const queryMap = {};
     for (const job of jobs) {
         const jobLeads = leads.filter(l => l.jobId === job.jobId);
@@ -51,7 +51,7 @@ export const getAnalyticsSummary = async (userId) => {
             .sort((a, b) => b.highPercentage - a.highPercentage)
             .slice(0, 5);
 
-  // ── 6. Average rating per query ──────────────────────────────────
+  // 6. Average rating per query 
     const ratingMap = {};
     for (const lead of leads) {
         const job = jobs.find(j => j.jobId === lead.jobId);
@@ -66,7 +66,7 @@ export const getAnalyticsSummary = async (userId) => {
         avgRating: Math.round((val.total / val.count) * 10) / 10
     }));
 
-  // ── 7. Summary stats ─────────────────────────────────────────────
+  // 7. Summary stats 
     const totalJobs = jobs.length;
     const totalLeads = leads.length;
     const totalHighLeads = scoreDistribution.High;

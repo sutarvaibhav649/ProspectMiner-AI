@@ -13,7 +13,7 @@ export const callLLM = async (prompt) => {
     for (const model of MODELS) {
         for (let attempt = 1; attempt <= 3; attempt++) {
         try {
-            console.log(`   🔁 Trying model: ${model} (attempt ${attempt})`);
+            console.log(`Trying model: ${model} (attempt ${attempt})`);
 
             const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
@@ -33,28 +33,28 @@ export const callLLM = async (prompt) => {
 
             // No endpoints for this model — skip immediately, don't retry
             if (data.error?.message?.includes('No endpoints found')) {
-            console.log(`${model} has no endpoints, skipping...`);
-            break;
+                console.log(`${model} has no endpoints, skipping...`);
+                break;
             }
 
             // Rate limited — wait longer and retry
             if (data.error?.code === 429) {
-            const waitSeconds = attempt * 15; // 15s, 30s, 45s
-            console.log(` Rate limited on ${model}, waiting ${waitSeconds}s...`);
-            await delay(waitSeconds * 1000);
-            continue;
+                const waitSeconds = attempt * 15; // 15s, 30s, 45s
+                console.log(` Rate limited on ${model}, waiting ${waitSeconds}s...`);
+                await delay(waitSeconds * 1000);
+                continue;
             }
 
             // Other error — try next model
             if (!response.ok || data.error) {
-            console.log(` ${model} failed: ${data.error?.message}`);
-            break;
+                console.log(` ${model} failed: ${data.error?.message}`);
+                break;
             }
 
             const text = data.choices[0]?.message?.content;
-            if (text) {
-            console.log(`Got response from ${model}`);
-            return text;
+                if (text) {
+                console.log(`Got response from ${model}`);
+                return text;
             }
 
         } catch (err) {
