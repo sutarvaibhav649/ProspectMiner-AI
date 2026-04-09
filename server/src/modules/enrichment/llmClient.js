@@ -1,4 +1,5 @@
 const MODELS = [
+    'google/gemma-3-12b-it:free',
     'google/gemma-3-4b-it:free',
     'google/gemma-3-12b-it:free',
     'deepseek/deepseek-r1-0528-qwen3-8b:free',

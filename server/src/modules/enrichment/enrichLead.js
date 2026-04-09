@@ -53,14 +53,14 @@ export const enrichLead = async (lead, websiteText) => {
         const clean = response.replace(/```json|```/g, '').trim();
         const parsed = JSON.parse(clean);
         return {
-        services: parsed.services || null,
-        ownerName: parsed.ownerName || null,
-        emailPattern: parsed.emailPattern || null,
-        score: ['High', 'Medium', 'Low'].includes(parsed.score) ? parsed.score : 'Low',
-        scoreReason: parsed.scoreReason || null
+            services: parsed.services || null,       // ← must be 'services'
+            ownerName: parsed.ownerName || null,      // ← must be 'ownerName'
+            emailPattern: parsed.emailPattern || null, // ← must be 'emailPattern'
+            score: ['High', 'Medium', 'Low'].includes(parsed.score) ? parsed.score : 'Low',
+            scoreReason: parsed.scoreReason || null
         };
     } catch (err) {
-        console.log(`⚠️  Failed to parse LLM response: ${err.message}`);
+        console.log(` Failed to parse LLM response: ${err.message}`);
         console.log(`Raw response: ${response}`);
         return {
         services: null,

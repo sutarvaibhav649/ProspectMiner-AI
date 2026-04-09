@@ -155,7 +155,7 @@ export default function HomePage() {
         {/* ── Footer ── */}
         <footer className="footer">
             <span className="footer-logo">ProspectMiner AI</span>
-            <span>© 2025 Infotact Solutions. All rights reserved.</span>
+            <span>© 2026 Infotact Solutions. All rights reserved.</span>
         </footer>
         </div>
     );
