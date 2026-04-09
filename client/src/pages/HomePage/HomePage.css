@@ -1,0 +1,359 @@
+.home-wrapper {
+    min-height: 100vh;
+    background: #f1f5f9;
+}
+
+/* ── Hero ── */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 24px 40px;
+    text-align: center;
+}
+
+.hero-badge {
+    background: #ede9fe;
+    color: #6366f1;
+    border: 1px solid #c4b5fd;
+    border-radius: 999px;
+    padding: 5px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero-highlight {
+    color: #6366f1;
+}
+
+.hero-sub {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* ── Search Card ── */
+.search-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.search-error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #dc2626;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.search-field label,
+.limit-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.search-field input {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.search-field input:focus {
+    border-color: #6366f1;
+}
+
+.search-bottom {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.limit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.limit-field input {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 15px;
+    width: 120px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.limit-field input:focus {
+    border-color: #6366f1;
+}
+
+.find-btn {
+    flex: 1;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.find-btn:hover:not(:disabled) {
+    background: #4f46e5;
+}
+
+.find-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.credit-hint {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #64748b;
+    text-align: center;
+}
+
+.accent {
+    color: #6366f1;
+    font-weight: 600;
+}
+
+/* ── Stats ── */
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 48px 24px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    color: #0f172a;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+    margin-top: 4px;
+}
+
+/* ── Features ── */
+.features-section {
+    padding: 72px 40px;
+    background: #f1f5f9;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.section-sub {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 28px 24px;
+    text-align: left;
+}
+
+.feature-icon {
+    font-size: 28px;
+    background: #ede9fe;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* ── How It Works ── */
+.how-section {
+    padding: 72px 40px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.steps-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 48px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.step-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.step-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #6366f1;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-line {
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 14px;
+}
+
+.step-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 6px;
+    text-align: center;
+    padding: 0 8px;
+}
+
+/* ── CTA ── */
+.cta-section {
+    background: #6366f1;
+    padding: 72px 24px;
+    text-align: center;
+    color: white;
+}
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.cta-section p {
+    font-size: 16px;
+    opacity: 0.85;
+    margin-bottom: 32px;
+}
+
+.cta-btn {
+    background: white;
+    color: #6366f1;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cta-btn:hover {
+    opacity: 0.9;
+}
+
+/* ── Footer ── */
+.footer {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer-logo {
+    font-weight: 700;
+    color: #f1f5f9;
+    font-size: 16px;
+}

@@ -1,0 +1,131 @@
+
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Changed from dark gradient to the light gray background of your home page */
+    background: #f1f5f9; 
+}
+
+.auth-card {
+    /* Changed to white with the subtle border from your search-card */
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    /* Soft shadow to match the search-card feel */
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.auth-logo {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    /* Dark slate color used in your hero-title */
+    color: #0f172a; 
+    margin: 0 0 4px 0;
+}
+
+.auth-subtitle {
+    text-align: center;
+    /* Muted slate blue from your hero-sub */
+    color: #64748b;
+    font-size: 14px;
+    margin: 0 0 28px 0;
+}
+
+.auth-error {
+    /* Light red theme to match your search-error */
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #dc2626;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    /* Matching label weight/color from search-field */
+    color: #0f172a;
+}
+
+.form-group input {
+    /* White background with light borders to match your home page inputs */
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #0f172a;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #6366f1;
+}
+
+.auth-btn {
+    /* Indigo accent from your home page */
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 4px;
+}
+
+.auth-btn:hover:not(:disabled) {
+  background: #4f46e5;
+}
+
+.auth-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-link {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+}
+
+.auth-link a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
