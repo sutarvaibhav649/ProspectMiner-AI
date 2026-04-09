@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "prospectminer-server",
   "version": "1.0.0",
   "description": "Backend for ProspectMiner AI - Lead generation system",
@@ -27,5 +28,25 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
+=======
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is the server folder for the ProspectMiner AI project",
+  "keywords": [
+    "AI",
+    "Miner",
+    "ProspectMiner",
+    "AI"
+  ],
+  "license": "ISC",
+  "author": "Vaibhav Sutar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+>>>>>>> de2f8be84931582659547cbf54840b72b5811262
   }
 }

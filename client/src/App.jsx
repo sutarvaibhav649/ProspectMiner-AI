@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
@@ -53,3 +54,12 @@ function App() {
 }
 
 export default App;
+=======
+const App = () => {
+  return (
+    <div>App</div>
+  )
+}
+
+export default App
+>>>>>>> de2f8be84931582659547cbf54840b72b5811262
