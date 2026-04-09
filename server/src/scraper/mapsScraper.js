@@ -41,8 +41,8 @@ export const scrapeGoogleMaps = async (page, query, limit) => {
             // Click the card
             await page.evaluate((idx) => {
             const cards = document.querySelectorAll('[role="feed"] > div > div > a');
-            if (cards[idx]) cards[idx].click();
-            }, processedIndex);
+                if (cards[idx]) cards[idx].click();
+                }, processedIndex);
 
             await delay(3500);
 
@@ -90,10 +90,7 @@ export const scrapeGoogleMaps = async (page, query, limit) => {
                 for (const btn of allBtns) {
                 const t = btn.getAttribute('aria-label') || btn.innerText || '';
                 const m = t.replace(/\s+/g, '').match(/(\+?[\d]{7,15})/);
-                if (m) {
-                    phone = m[0];
-                    break;
-                }
+                if (m) { phone = m[0]; break; }
                 }
             }
 
@@ -116,10 +113,7 @@ export const scrapeGoogleMaps = async (page, query, limit) => {
                 const candidates = document.querySelectorAll('[class*="Io6YTe"]');
                 for (const el of candidates) {
                 const t = el.innerText?.trim();
-                if (t && t.length > 15 && /\d/.test(t)) {
-                    address = t;
-                    break;
-                }
+                if (t && t.length > 15 && /\d/.test(t)) { address = t; break; }
                 }
             }
 
@@ -133,26 +127,35 @@ export const scrapeGoogleMaps = async (page, query, limit) => {
 
             // Validate and push
             if (
-            details.name &&
-            details.name.length > 1 &&
-            details.name !== 'Results' &&
-            !seenNames.has(details.name)
-            ) {
-            seenNames.add(details.name);
-            results.push(details);
-            console.log(`[${results.length}/${limit}] ${details.name}`);
-            console.log(`   ${details.phone || 'N/A'} |  ${details.rating || 'N/A'} |  ${details.website || 'N/A'}`);
+                details.name &&
+                details.name.length > 1 &&
+                details.name !== 'Results' &&
+                !seenNames.has(details.name)
+            ) 
+            {
+                seenNames.add(details.name);
+                results.push(details);
+                console.log(`[${results.length}/${limit}] ${details.name}`);
+                console.log(`${details.phone || 'N/A'} | ${details.rating || 'N/A'} |${details.website || 'N/A'}`);
             } else {
-            console.log(`⏭Skipping: "${details.name}" (duplicate or invalid)`);
+                console.log(`Skipping: "${details.name}" (duplicate or invalid)`);
             }
 
             // Close detail panel and wait for it to clear
-            await page.keyboard.press('Escape');
-            await page.waitForFunction(
-            () => !document.querySelector('h1.DUwDvf') || document.querySelector('h1.DUwDvf')?.innerText === '',
-            { timeout: 3000 }
-            ).catch(() => {});
-            await delay(1500);
+            await page.evaluate(() => {
+                // Google Maps back button in the detail panel
+                const backBtn = document.querySelector('button[aria-label="Back"]');
+                if (backBtn) {
+                    backBtn.click();
+                    return 'clicked back button';
+                }
+                // fallback — click the top-left X or chevron
+                const closeBtn = document.querySelector('button[jsaction*="back"], button[data-value="back"]');
+                if (closeBtn) { closeBtn.click(); return 'clicked close'; }
+                    return 'no back button found';
+                });
+
+                await delay(2000);
 
         } catch (err) {
             console.log(`Error on index ${processedIndex}: ${err.message}`);
