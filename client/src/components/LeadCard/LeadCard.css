@@ -1,0 +1,70 @@
+.lead-row:hover { 
+    background: #f8fafc; 
+}
+.lead-name { 
+    font-weight: 600; 
+    color: #0f172a; 
+}
+.lead-rating { 
+    white-space: nowrap; 
+}
+.star { 
+    font-size: 13px; 
+}
+.fetching { 
+    color: #94a3b8; 
+    font-size: 13px; 
+}
+.calculating { 
+    color: #f59e0b; 
+    font-size: 13px; 
+}
+.email-val { 
+    color: #6366f1; 
+    font-size: 13px; 
+}
+.na-val { 
+    color: #94a3b8; 
+    font-size: 13px; 
+}
+.details-btn { 
+    background: none; 
+    border: none; 
+    color: #6366f1; 
+    font-weight: 600; 
+    font-size: 13px; 
+    cursor: pointer; 
+    padding: 0; 
+}
+.details-btn:hover { 
+    text-decoration: underline; 
+}
+.expanded-row td { 
+    background: #f8fafc; 
+    padding: 0; 
+}
+.expanded-content { 
+    padding: 20px 24px; 
+    border-top: 1px solid #e2e8f0; }
+.expanded-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 16px; 
+}
+.exp-label { 
+    font-size: 11px; 
+    font-weight: 600; 
+    color: #94a3b8; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    margin-bottom: 4px; 
+}
+.exp-value { 
+    font-size: 13px; 
+    color: #334155; 
+    line-height: 1.5; 
+}
+.exp-value a { 
+    color: #6366f1; 
+    word-break: break-all; 
+}
