@@ -35,6 +35,12 @@ app.use(cors({
 scrapeWorker
 
 // Routes
+app.get("/api/v1/health", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Server is healthy"
+    })
+});
 app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/credits",creditsRoutes);
 app.use("/api/v1/scrape",scrapeRoutes);
