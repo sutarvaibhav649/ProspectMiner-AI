@@ -28,7 +28,7 @@ export const crawlWebsite = async (browser, url) => {
 
         return cleaned;
     } catch (err) {
-        console.log(`⚠️  Could not crawl ${url}: ${err.message}`);
+        console.log(`Could not crawl ${url}: ${err.message}`);
         return null;
     } finally {
         if (page) await page.close();
