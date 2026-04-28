@@ -25,7 +25,8 @@ app.use(express.json());
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://prospect-miner-ai-git-main-sutarvaibhav649s-projects.vercel.app"
+        "https://prospect-miner-ai-git-main-sutarvaibhav649s-projects.vercel.app",
+        "https://prospect-miner-ai.vercel.app"
     ],
     methods: ["GET","POST","PATCH","DELETE","PUT"],
     credentials: true
