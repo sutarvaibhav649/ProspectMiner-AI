@@ -23,12 +23,18 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "https://prospect-miner-ai-git-main-sutarvaibhav649s-projects.vercel.app",
-        "https://prospect-miner-ai.vercel.app"
-    ],
-    methods: ["GET","POST","PATCH","DELETE","PUT"],
+    origin: (origin, callback) => {
+        const allowed = [
+        'http://localhost:5173',
+        'https://prospect-miner-ai.vercel.app'
+        ];
+        if (!origin || allowed.includes(origin) || origin.endsWith('.vercel.app')) {
+        callback(null, true);
+        } else {
+        callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
     credentials: true
 }));
 
