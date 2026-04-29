@@ -8,9 +8,12 @@ dotenv.config({
 puppeteer.use(StealthPlugin());
 
 export const launchBrowser = async () => {
+    const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || 
+        '/opt/render/project/src/.cache/puppeteer/chrome/linux-146.0.7680.153/chrome-linux64/chrome';
+    
     return await puppeteer.launch({
         headless: true,
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null,
+        executablePath,
         args: [
             "--no-sandbox",
             "--disable-setuid-sandbox",
